@@ -31,6 +31,10 @@ angular.module('ChartsApp').directive('treeChart', function(bus) {
                 chart.kpisFilter(kpisFilter);
             });
 
+            bus.on('machinesFilterChange', function(machinesFilter) {
+                chart.machinesFilter(machinesFilter);
+            });
+
             bus.on('hostsFilterChange', function(hostsFilter) {
                 chart.hostsFilter(hostsFilter);
             });

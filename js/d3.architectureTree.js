@@ -8,7 +8,7 @@ d3.chart.architectureTree = function() {
     var clicked = false;
 
     /**
-     * Build the chart
+     * Build the chart lol
      */
     function chart(){
         if (typeof(tree) === 'undefined') {
@@ -187,6 +187,7 @@ d3.chart.architectureTree = function() {
         node.index = {
             relatedNodes: [],
             kpis: [],
+            machines: [],
             hosts: []
         };
         var dependsOn = getDetailCascade(node, 'dependsOn');
@@ -199,6 +200,10 @@ d3.chart.architectureTree = function() {
         var kpis = getDetailCascade(node, 'kpis');
         if (kpis.length > 0) {
             node.index.kpis = kpis;
+        }
+        var machines = getDetailCascade(node, 'machines');
+        if (machines.length > 0) {
+            node.index.machines = machines;
         }
         var hosts = getHostsCascade(node);
         if (hosts.length > 0) {
@@ -248,12 +253,13 @@ d3.chart.architectureTree = function() {
     var filters = {
       name: '',
       kpis: [],
+      machines: [],
       hosts: []
     };
 
     var isFoundByFilter = function(d) {
         var i;
-        if (!filters.name && !filters.kpis.length && !filters.hosts.length) {
+        if (!filters.name && !filters.kpis.length && !filters.machines.length && !filters.hosts.length) {
             // nothing selected
             return true;
         }
@@ -267,6 +273,13 @@ d3.chart.architectureTree = function() {
             if (d.index.kpis.length === 0) return false;
             for (i = 0; i < kpisCount; i++) {
                 if (d.index.kpis.indexOf(filters.kpis[i]) === -1) return false;
+            }
+        }
+        var machinesCount = filters.machines.length;
+        if (machinesCount) {
+            if (d.index.machines.length === 0) return false;
+            for (i = 0; i < machinesCount; i++) {
+                if (d.index.machines.indexOf(filters.machines[i]) === -1) return false;
             }
         }
         var hostCount = filters.hosts.length;
@@ -331,12 +344,17 @@ d3.chart.architectureTree = function() {
     };
 
     chart.nameFilter = function(nameFilter) {
-        filters.name = nameFilter;
+        filters.name = nameFilter.toLowerCase();
         refreshFilters();
     };
 
     chart.kpisFilter = function(kpisFilter) {
         filters.kpis = kpisFilter;
+        refreshFilters();
+    };
+
+    chart.machinesFilter = function(machinesFilter) {
+        filters.machines = machinesFilter;
         refreshFilters();
     };
 

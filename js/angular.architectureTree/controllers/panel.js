@@ -74,6 +74,10 @@ angular.module('ChartsApp').controller('panelCtrl', function ($scope, $timeout, 
             if (kpis.length > 0) {
                 node.details.kpis = kpis.map(getValueAndAncestor);
             }
+            var machines = getDetailCascade(node, 'machines');
+            if (machines.length > 0) {
+                node.details.machines = machines.map(getValueAndAncestor);
+            }
             if (node.host) {
                 node.details.Host = [];
                 for (var i in node.host) {
@@ -242,6 +246,17 @@ angular.module('ChartsApp').controller('panelCtrl', function ($scope, $timeout, 
 
     $scope.deletekpi = function(index) {
         $scope.node.kpis.splice(index, 1);
+    };
+
+    $scope.addmachine = function() {
+        if (typeof ($scope.node.machines) === 'undefined') {
+            $scope.node.machines = [];
+        }
+        $scope.node.machines.push('');
+    };
+
+    $scope.deletemachine = function(index) {
+        $scope.node.machines.splice(index, 1);
     };
 
     $scope.addHost = function(key) {
