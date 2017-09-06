@@ -8,7 +8,7 @@ d3.chart.architectureTree = function() {
     var clicked = false;
 
     /**
-     * Build the chart
+     * Build the chart lol
      */
     function chart(){
         if (typeof(tree) === 'undefined') {
