@@ -3,12 +3,14 @@ angular.module('ChartsApp').controller('filterCtrl', function ($scope, bus) {
 
     bus.on('updateData', function(data) {
         $scope.kpis = computekpis(data);
+        $scope.machines = computemachines(data);
         $scope.hosts = computeHosts(data);
     });
 
     $scope.nameFilter = '';
 
     var kpisFilter = [];
+    var machinesFilter = [];
     var hostsFilter = [];
 
     $scope.$watch('nameFilter', function(name) {
@@ -26,6 +28,19 @@ angular.module('ChartsApp').controller('filterCtrl', function ($scope, bus) {
 
     $scope.iskpiInFilter = function(kpi) {
         return kpisFilter.indexOf(kpi) !== -1;
+    };
+
+    $scope.togglemachineFilter = function(machine) {
+        if ($scope.ismachineInFilter(machine)) {
+            machinesFilter.splice(machinesFilter.indexOf(machine), 1);
+        } else {
+            machinesFilter.push(machine);
+        }
+        bus.emit('machinesFilterChange', machinesFilter);
+    };
+
+    $scope.ismachineInFilter = function(machine) {
+        return machinesFilter.indexOf(machine) !== -1;
     };
 
     $scope.toggleHostFilter = function(host) {
@@ -60,6 +75,27 @@ angular.module('ChartsApp').controller('filterCtrl', function ($scope, bus) {
         addNodekpis(rootNode);
 
         return Object.keys(kpis).sort();
+    }
+
+    function computemachines(rootNode) {
+        var machines = [];
+
+        function addNodemachines(node) {
+            if (node.machines) {
+                node.machines.forEach(function(machine) {
+                    machines[machine] = true;
+                });
+            }
+            if (node.children) {
+                node.children.forEach(function(childNode) {
+                    addNodemachines(childNode);
+                });
+            }
+        }
+
+        addNodemachines(rootNode);
+
+        return Object.keys(machines).sort();
     }
 
     function computeHosts(rootNode) {

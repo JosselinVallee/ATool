@@ -1,9 +1,36 @@
 <form name="editForm" ng-submit="editNode(editForm, $event)">
-    <div class="details panel panel-info">
-        <div class="panel-heading">
-            <input type="text" ng-model="node.name" class="form-control"/>
-        </div>
-        <div class="panel-body">
+    <div class="details panel panel-info">      
+            <div class="reqtype">
+                <h5>Requirement type</h5>
+                <input type="text" ng-model="node.type" class="form-control" init-focus />
+            </div>
+
+            <div class="requirementwhat">
+                <h5>Requirement description</h5>
+                <textarea ng-model="node.requirement" class="form-control" init-focus></textarea>
+            </div>
+
+            <div class="requirementhow">
+                <h5>How</h5>
+                <textarea ng-model="node.how" class="form-control" init-focus></textarea>
+            </div>
+
+            <div class="requirementwhy">
+                <h5>Why</h5>
+                <textarea ng-model="node.why" class="form-control" init-focus></textarea>
+            </div>
+
+            <div class="requirementid">
+                <h5>ID</h5>
+                <textarea ng-model="node.id" class="form-control" init-focus></textarea>
+            </div>
+            <div class="qsdoc">
+                <h5>QS Document</h5>
+                <textarea ng-model="node.qsdoc" class="form-control" init-focus></textarea>
+            </div>
+
+
+
             <div class="url">
                 <h5>Url</h5>
                 <input type="text" ng-model="node.url" class="form-control" init-focus />
@@ -19,6 +46,13 @@
                 <ul>
                     <li ng-repeat="dependencies in node.dependsOn track by $index">
                         <input type="text" ng-model="node.dependsOn[$index]" init-focus /> <span class="remove glyphicon glyphicon-remove" ng-click="deleteDependency($index)"></span>
+                    </li>
+                </ul>
+
+                <h5>Machines <span class="glyphicon glyphicon-plus" ng-click="addmachine()"></span></h5>
+                <ul>
+                    <li ng-repeat="machine in node.machines track by $index">
+                        <input type="text" ng-model="node.machines[$index]" init-focus /> <span class="remove glyphicon glyphicon-remove" ng-click="deletemachine($index)"></span>
                     </li>
                 </ul>
 
