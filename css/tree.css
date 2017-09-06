@@ -26,7 +26,7 @@ img {
 
 
 #requirementpanel {
-    max-height: 800px;
+    max-height: 750px;
     height: 80%; /* new */
     overflow-y: auto;
 }
