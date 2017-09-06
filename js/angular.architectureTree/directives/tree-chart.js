@@ -16,7 +16,7 @@ angular.module('ChartsApp').directive('treeChart', function(bus) {
                     return;
                 }
 
-                chart.diameter(960)
+                chart.diameter(window.innerHeight*0.8)
                     .data(scope.data);
 
                 d3.select(element[0])

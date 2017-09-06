@@ -13,7 +13,7 @@ d3.chart.architectureTree = function() {
     function chart(){
         if (typeof(tree) === 'undefined') {
             tree = d3.layout.tree()
-                .size([360, diameter / 2 - 120])
+                .size([360, diameter/2 - 120])
                 .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
 
             svg = d3.select("#graph").append("svg")
@@ -126,11 +126,11 @@ d3.chart.architectureTree = function() {
                 select(d.name);
             });
         node.append("circle")
-            .attr("r", function(d) { return 4.5 * (d.size || 1);})
+            .attr("r", function(d) { if(d.type == 'Process'){return 6*(d.size || 1);}else{return 4.5 * (d.size || 1);}})
             .style('stroke', function(d) {
                 return d3.scale.linear()
                     .domain([1, 0])
-                    .range(["steelblue", "red"])(typeof d.satisfaction !== "undefined" ? d.satisfaction : 1);
+                    .range(["steelblue", "red"])(d.type !== "Process" ? 1 : 0);
             })
             .style('fill', function(d) {
                 if (typeof d.satisfaction === "undefined") return '#fff';
@@ -258,7 +258,9 @@ d3.chart.architectureTree = function() {
             return true;
         }
         if (filters.name) {
-            if (d.name.toLowerCase().indexOf(filters.name) === -1) return false;
+            if (d.name.toLowerCase().indexOf(filters.name) === -1 && d.requirement && d.requirement.toLowerCase().indexOf(filters.name) === -1){
+                return false 
+            }
         }
         var kpisCount = filters.kpis.length;
         if (kpisCount) {
@@ -299,7 +301,7 @@ d3.chart.architectureTree = function() {
                 );
                 d3.select(this).attr("id", "node-active");
                 activeNode = d;
-                fade(0.1)(d);
+                fade(0.5)(d);
             });
     };
 

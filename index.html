@@ -89,7 +89,7 @@
                     <div class="col-md-7">
                         <h1 class="text-center">Cool Tree</h1>
                             <div ng-controller="chartCtrl" id="tree-container">
-                                <tree-chart data="data" diameter="700"></tree-chart>
+                                <tree-chart data="data"></tree-chart>
                             </div>   
                     </div>
 
@@ -99,7 +99,7 @@
                         <div ng-controller="panelCtrl">
                             <div id="panel">
                                     <div ng-if="detail">
-                                        <ng-include src="'js/angular.architectureTree/templates/panel-detail.html?v=1.1'"></ng-include>
+                                        <ng-include src="'js/angular.architectureTree/templates/panel-detail.html?v=1.6'"></ng-include>
                                     </div>
 
                                     <div ng-if="edit">
@@ -135,7 +135,6 @@
         
         <script src="js/vendor/d3.v3.js"></script>
         <script src="js/vendor/angular.min.js"></script>
-
         <script src="js/d3.architectureTree.js"></script>
         <script src="js/angular.architectureTree/app.js"></script>
         <script src="js/angular.architectureTree/controllers/chart.js"></script>
