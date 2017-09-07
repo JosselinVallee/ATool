@@ -3,12 +3,7 @@ h1 {
     font-size: 26px;
 }
 
-body {
-    top:0px;
-    bottom:0px;
-    left:0px;
-    right:0px;
-}
+
 /* #atoolpmie {
     width: 250px;
     background-image: url('../media/pmielogo.png');
@@ -31,15 +26,19 @@ img {
     overflow-y: auto;
 }
 
-
+#editfields {
+    max-height: 700px;
+    height: 80%; /* new */
+    overflow-y: auto;
+}
 
 #approw {
-    height : 85%;
     background-image: url('../media/background.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 4px;
+    min-height:800px;
 }
 
 li:hover {
@@ -66,12 +65,10 @@ li:hover {
 }
 
 #toprow {
-    height: 10%;
     margin-top: 15px;
 }
 
 #bottomrow {
-    height: 5%;
     text-align: center;
 }
 

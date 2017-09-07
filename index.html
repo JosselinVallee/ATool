@@ -8,8 +8,7 @@
 
     </head>
     <body>
-       
-        <div class="container-fluid">
+       <div class="container-fluid" id="bootcontain">
             <div class="row" id="toprow">
                 <div id="navbardiv" class="col-md-12">              
                     <nav class="navbar navbar-default">
@@ -81,13 +80,12 @@
                     
                     <div class="col-md-2">
                         <div ng-controller="filterCtrl">
-                            <ng-include src="'js/angular.architectureTree/templates/filter.html?v=1.0'"></ng-include>
+                            <ng-include src="'js/angular.architectureTree/templates/filter.html?v=1.1'"></ng-include>
                         </div>
                     </div>            
                     
                     
                     <div class="col-md-7">
-                        <h1 class="text-center">Cool Tree</h1>
                             <div ng-controller="chartCtrl" id="tree-container">
                                 <tree-chart data="data"></tree-chart>
                             </div>   
@@ -100,7 +98,7 @@
                             <div id="panel">
                                     <div ng-if="detail">
 
-                                        <ng-include src="'js/angular.architectureTree/templates/panel-detail.html?v=1.8'"></ng-include>
+                                        <ng-include src="'js/angular.architectureTree/templates/panel-detail.html?v=1.7'"></ng-include>
 
                                     </div>
 

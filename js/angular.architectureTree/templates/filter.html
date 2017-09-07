@@ -11,10 +11,6 @@
         <h5>Machines</h5>
         <a ng-repeat="machine in machines" class="btn btn-default btn-xs" ng-click="togglemachineFilter(machine)" ng-class="{'btn-primary': ismachineInFilter(machine) }">{{ machine }}</a>
       </div>
-      <div id="host">
-        <h5>Host</h5>
-        <a ng-repeat="host in hosts" class="btn btn-default btn-xs" ng-click="toggleHostFilter(host)" ng-class="{'btn-primary': isHostInFilter(host) }">{{ host }}</a>
-      </div>
     </form>
   </div>
 </div>

@@ -31,32 +31,7 @@ d3.chart.architectureTree = function() {
         svg.call(updateData, nodes, links);
     }
 
-     function collapse(d) {
-        if (d.children) {
-            d._children = d.children;
-            d._children.forEach(collapse);
-            d.children = null;
-        }
-    }
-
-    function expand(d) {
-        if (d._children) {
-            d.children = d._children;
-            d.children.forEach(expand);
-            d._children = null;
-        }
-    }
-
-    function toggleChildren(d) {
-        if (d.children) {
-            d._children = d.children;
-            d.children = null;
-        } else if (d._children) {
-            d.children = d._children;
-            d._children = null;
-        }
-        return d;
-    }
+    
 
     /**
      * Update the chart data
