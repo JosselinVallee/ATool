@@ -1,138 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+    
     <head>
         <title>Assessment Tool</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
         <link rel="stylesheet" href="css/tree.css" />
-
     </head>
+    
     <body>
        <div class="container-fluid" id="bootcontain">
-            <div class="row" id="toprow">
-                <div id="navbardiv" class="col-md-12">              
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                                
-                                <a class="navbar-brand" href="#">
-                                    <img alt="Brand" src="../media/pmielogo.png">
-                                    <font color="steelblue"><strong>ATOOL</strong></font>
-                                    <sub><font size="1"><strong>PMIE</strong>ngineering</font></sub>
-                                </a>
-                            </div>
-
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul id="test" class="nav navbar-nav">
-                                    <li class="active"><a href="#">Manage Requirements<span class="sr-only">(current)</span></a></li>
-                                    <li><a href="#">Perform Assessment</a></li>
-                                    <li><a href="#">See Statistics</a></li>
-                                </ul>
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-                                        <ul id="login-dp" class="dropdown-menu">
-                                            <li>
-                                                <div class="row">
-                                                    <div class="col-md-12">          
-                                                        <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                                            <div class="form-group">
-                                                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                                                                                     
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                                                            </div>
-                                                            <div class="checkbox">
-                                                                <label>
-                                                                <input type="checkbox"> keep me logged-in
-                                                                </label>
-                                                            </div>
-                                                        </form>
-                                                    </div>    
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div><!-- /.navbar-collapse -->
-                        </div><!-- /.container-fluid -->
-                    </nav>
-                </div>
-            </div>
-            
-            <div id="approw" class="row">
-                
-                <div ng-app="ChartsApp">
-                    
-                    <div class="col-md-2">
-                        <div ng-controller="filterCtrl">
-                            <ng-include src="'js/angular.architectureTree/templates/filter.html?v=1.1'"></ng-include>
-                        </div>
-                    </div>            
-                    
-                    
-                    <div class="col-md-7">
-                            <div ng-controller="chartCtrl" id="tree-container">
-                                <tree-chart data="data"></tree-chart>
-                            </div>   
+            <div ng-app="ChartsApp">
+                <div class="row" id="toprow">
+                    <div class="col-md-12"> 
+                        <div id="navbardiv" ng-include="'js/angular.architectureTree/templates/navbar.html?v=1.2'"></div>
                     </div>
-
-                    
-                    <div class="col-md-3">
+                </div>
                 
-                        <div ng-controller="panelCtrl">
-                            <div id="panel">
-                                    <div ng-if="detail">
-
-                                        <ng-include src="'js/angular.architectureTree/templates/panel-detail.html?v=1.7'"></ng-include>
-
-                                    </div>
-
-                                    <div ng-if="edit">
-                                        <ng-include src="'js/angular.architectureTree/templates/panel-edit.html?v=1.5'"></ng-include>
-                                    </div>
-                                </div>
-                            </div>                        
-                        </div>
-
-
-                        
-
-
+                <div class="row" id="approw">
+                    <div class="col-md-2">
+                        <div ng-controller="filterCtrl" ng-include="'js/angular.architectureTree/templates/filter.html?v=1.1'"></div>
+                    </div>            
+                    <div class="col-md-7">
+                        <div ng-controller="chartCtrl" id="tree-container">
+                            <tree-chart data="data"></tree-chart>
+                        </div>   
+                    </div>
+                    <div class="col-md-3">
+                        <div id="panel" ng-controller="panelCtrl">
+                            <div ng-if="detail" ng-include="'js/angular.architectureTree/templates/panel-detail.html?v=1.8'"></div>
+                            <div ng-if="edit" ng-include="'js/angular.architectureTree/templates/panel-edit.html?v=1.8'"></div> 
+                        </div>                        
+                    </div> 
                 </div>
-            </div>
-
-            <div id="bottomrow" class="row">
-                <div class="col-md-3">
-                       Developped by PMI Engineering 
-                </div> 
-                <div class="col-md-3">
-                        
+                
+                <div class="row" id="bottomrow">
+                    <div class="col-md-3">Developped by PMI Engineering </div> 
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3">2017 All rights Reserved</div>     
                 </div>
-                <div class="col-md-3">
-                        
-                </div>
-                <div class="col-md-3">
-                        2017 All rights Reserved
-                </div>     
             </div>
         </div>
-        
-        
         <script src="js/vendor/d3.v3.js"></script>
         <script src="js/vendor/angular.min.js"></script>
         <script src="js/d3.architectureTree.js"></script>

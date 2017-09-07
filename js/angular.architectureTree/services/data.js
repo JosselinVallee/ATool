@@ -1,5 +1,3 @@
-
-
 angular.module('ChartsApp').service('data', function ($http, $q, bus) {
     'use strict';
 

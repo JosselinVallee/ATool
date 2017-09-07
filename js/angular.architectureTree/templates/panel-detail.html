@@ -1,28 +1,32 @@
 <div class="details panel panel-info">
-    <div class="panel-heading">{{ node.name }}</div>
+    <div class="panel-heading">
+        {{ node.name }}
+    </div>
     <div class="panel-body" id="requirementpanel">
-        <div class="properties" ng-if="node.qsdoc && node.id">
-            <p><b>QS Document:   </b><span>{{node.qsdoc}}</span><b>   Id:   </b><span>{{node.id}}</span></p>
-        </div>
-        <div class="properties" ng-if="node.requirement">
-           <p><b>Requirement:</b><span>{{node.requirement}}</span><p>
-        </div>
-        <div class="properties" ng-if="node.how">
-           <p><b>How:</b><span>{{node.how}}</span><p>
-        </div>
-        <div class="properties" ng-if="node.how">
-           <p><b>Why:</b><span>{{node.why}}</span><p>
-        </div>
-        <div class="url" ng-if="node.url">
-            <a href="{{ node.url }}">{{ node.url }}</a>
-        </div>
-        <div class="properties" ng-if="node.details.kpis">
-            <h5><b>KPI</b></h5>
-            <ul>
-                <li ng-repeat="kpi in node.details.kpis">
-                    {{ kpi }}
-                </li>
-            </ul>
+        <div class="panel-group" ng-if="'node.type!==Process'">  
+            <div class="properties" ng-if="node.qsdoc && node.id">
+                <p><b>QS Document:</b><span>{{node.qsdoc}}</span><b>Id:</b><span>{{node.id}}</span></p>
+            </div>
+            <div class="properties" ng-if="node.requirement">
+               <p><b>Requirement:</b><span>{{node.requirement}}</span><p>
+            </div>
+            <div class="properties" ng-if="node.how">
+               <p><b>How:</b><span>{{node.how}}</span><p>
+            </div>
+            <div class="properties" ng-if="node.why">
+               <p><b>Why:</b><span>{{node.why}}</span><p>
+            </div>
+            <div class="url" ng-if="node.url">
+                <a href="{{ node.url }}">{{ node.url }}</a>
+            </div>
+            <div class="properties" ng-if="node.details.kpis">
+                <h5><b>KPI</b></h5>
+                <ul>
+                    <li ng-repeat="kpi in node.details.kpis">
+                        {{ kpi }}
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="panel-group" id="accordion" ng-if="'node.type==Process'" ng-repeat="child in node.children">
             <div class="panel panel-default">
@@ -37,7 +41,6 @@
                     </div>
                 </div>
             </div>
-                          
         </div>
     </div>
 </div>

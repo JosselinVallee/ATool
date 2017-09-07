@@ -1,70 +1,27 @@
 <form name="editForm" id="#editForm" ng-submit="editNode(editForm, $event)">
         <div class="details panel panel-info" id="editfields">     
-                <label for="name">Name/Title</label>
-                <input type="text" id="name" ng-model="node.name" class="form-control" init-focus />
-                <label for="type">Requirement Type</label>
-                <input type="text" ng-model="node.type" id="type" class="form-control" init-focus />
-                
-                <label for="qsdoc">QS Document</label>
-                <input type="text" ng-model="node.qsdoc" id="qsdoc" class="form-control" init-focus />
-                <label for="id">Id</label>
-                <input type="text" ng-model="node.id" id="id" class="form-control" init-focus />
-                
-                <label for="req">Requirement:</label>
-                <textarea ng-model="node.requirement" id="req" class="form-control" init-focus></textarea>
-                <label for="how">How:</label>
-                <textarea ng-model="node.how" id="how" class="form-control" init-focus></textarea>
-                <label for="why">Why:</label>
-                <textarea ng-model="node.why" id="why" class="form-control" init-focus></textarea>
+            <label for="name">Name/Title</label>
+            <input type="text" id="name" ng-model="node.name" class="form-control" init-focus />
+            <label for="type">Requirement Type</label>
+            <input type="text" ng-model="node.type" id="type" class="form-control" init-focus />
+            
+            <label for="qsdoc">QS Document</label>
+            <input type="text" ng-model="node.qsdoc" id="qsdoc" class="form-control" init-focus />
+            <label for="id">Id</label>
+            <input type="text" ng-model="node.id" id="id" class="form-control" init-focus />
+            
+            <label for="req">Requirement:</label>
+            <textarea ng-model="node.requirement" id="req" class="form-control" init-focus></textarea>
+            <label for="how">How:</label>
+            <textarea ng-model="node.how" id="how" class="form-control" init-focus></textarea>
+            <label for="why">Why:</label>
+            <textarea ng-model="node.why" id="why" class="form-control" init-focus></textarea>
 
-                <label for="url">Url:</label>
-                <input type="url" ng-model="node.url" id="url" class="form-control" init-focus />
-                <label for="comments">comments:</label>
-                <textarea ng-model="node.comments" id="comments" class="form-control" init-focus></textarea>
-
-    
-            <!-- <div class="name">
-                <h5>Name/Title</h5>
-                <input type="text" ng-model="node.name" class="form-control" init-focus />
-            </div>  
-            <div class="reqtype">
-                <h5>Requirement type</h5>
-                <input type="text" ng-model="node.type" class="form-control" init-focus />
-            </div>
-
-            <div class="requirementwhat">
-                <h5>Requirement description</h5>
-                <textarea ng-model="node.requirement" class="form-control" init-focus></textarea>
-            </div>
-
-            <div class="requirementhow">
-                <h5>How</h5>
-                <textarea ng-model="node.how" class="form-control" init-focus></textarea>
-            </div>
-
-            <div class="requirementwhy">
-                <h5>Why</h5>
-                <textarea ng-model="node.why" class="form-control" init-focus></textarea>
-            </div>
-
-            <div class="requirementid">
-                <h5>ID</h5>
-                <textarea ng-model="node.id" class="form-control" init-focus></textarea>
-            </div>
-            <div class="qsdoc">
-                <h5>QS Document</h5>
-                <textarea ng-model="node.qsdoc" class="form-control" init-focus></textarea>
-            </div>
-            <div class="url">
-                <h5>Url</h5>
-                <input type="text" ng-model="node.url" class="form-control" init-focus />
-            </div>
-
-            <div class="comments">
-                <h5>Comments</h5>
-                <textarea ng-model="node.comments" class="form-control" init-focus></textarea>
-            </div> -->
-
+            <label for="url">Url:</label>
+            <input type="url" ng-model="node.url" id="url" class="form-control" init-focus />
+            <label for="comments">comments:</label>
+            <textarea ng-model="node.comments" id="comments" class="form-control" init-focus></textarea>
+            
             <div class="properties edit">
                 <h5>Machines <span class="glyphicon glyphicon-plus" ng-click="addmachine()"></span></h5>
                 <ul>
