@@ -1,62 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
-    
-    <head>
-        <title>Assessment Tool</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
-        <link rel="stylesheet" href="css/tree.css" />
-    </head>
-    
-    <body>
-       <div class="container-fluid" id="bootcontain">
-            <div ng-app="ChartsApp">
-                <div class="row" id="toprow">
-                    <div class="col-md-12"> 
-                        <div id="navbardiv" ng-include="'js/angular.architectureTree/templates/navbar.html?v=1.2'"></div>
-                    </div>
-                </div>
-                
-                <div class="row" id="approw">
-                    <div class="col-md-2">
-                        <div ng-controller="filterCtrl" ng-include="'js/angular.architectureTree/templates/filter.html?v=1.1'"></div>
-                    </div>            
-                    <div class="col-md-7">
-                        <div ng-controller="chartCtrl" id="tree-container">
-                            <tree-chart data="data"></tree-chart>
-                        </div>   
-                    </div>
-                    <div class="col-md-3">
-                        <div id="panel" ng-controller="panelCtrl">
-                            <div ng-if="detail" ng-include="'js/angular.architectureTree/templates/panel-detail.html?v=1.8'"></div>
-                            <div ng-if="edit" ng-include="'js/angular.architectureTree/templates/panel-edit.html?v=1.8'"></div> 
-                        </div>                        
-                    </div> 
-                </div>
-                
-                <div class="row" id="bottomrow">
-                    <div class="col-md-3">Developped by PMI Engineering </div> 
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3"></div>
-                    <div class="col-md-3">2017 All rights Reserved</div>     
-                </div>
-            </div>
+<html lang="en" >
+<head>
+    <title>Assessment Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+</head>
+<body ng-app="ChartsApp" layout="column" ng-cloak>
+  <!--
+    Your HTML content here
+-->  
+    <md-toolbar layout="row" layout-align="center center" md-colors="{background: 'grey'}">
+        <img flex="5" alt="Brand" src="../../../media/pmielogo.png">
+        <div flex="10">
+            <a><font color="steelblue"><strong>ATOOL</strong></font><sub><font size="1"><strong>PMIE</strong>ngineering</font></sub></a>
         </div>
-        <script src="js/vendor/d3.v3.js"></script>
-        <script src="js/vendor/angular.min.js"></script>
-        <script src="js/d3.architectureTree.js"></script>
-        <script src="js/angular.architectureTree/app.js"></script>
-        <script src="js/angular.architectureTree/controllers/chart.js"></script>
-        <script src="js/angular.architectureTree/controllers/filter.js"></script>
-        <script src="js/angular.architectureTree/controllers/json-data.js"></script>
-        <script src="js/angular.architectureTree/controllers/panel.js"></script>
-        <script src="js/angular.architectureTree/controllers/undo.js"></script>
-        <script src="js/angular.architectureTree/directives/tree-chart.js"></script>
-        <script src="js/angular.architectureTree/directives/init-focus.js"></script>
-        <script src="js/angular.architectureTree/services/data.js"></script>
-        <script src="js/angular.architectureTree/services/bus.js"></script>
-        <script src='http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js'></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-    </body>
+        <md-nav-bar flex="80" md-selected-nav-item="page1" layout-padding nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-click="goto('page1')" name="page1">
+                Page One
+            </md-nav-item>
+            <md-nav-item md-nav-click="goto('page2')" name="page2">
+                Page Two
+            </md-nav-item>
+            <md-nav-item md-nav-click="goto('page3')" name="page3">
+                Page Three
+            </md-nav-item>
+        </md-nav-bar>
+        <md-menu md-position-mode="target-right target" >
+          <md-button aria-label="Open demo menu" class="md-icon-button" ng-click="$mdMenu.open($event)">
+            <md-icon md-menu-origin md-svg-icon="call:portable-wifi-off"></md-icon>
+          </md-button>
+          <md-menu-content width="4" >
+            <md-menu-item ng-repeat="item in [1, 2, 3]">
+              <md-button ng-click="ctrl.announceClick($index)">
+                  <div layout="row" flex>
+                    <p flex>Option {{item}}</p>
+                    <md-icon md-menu-align-target md-svg-icon="call:portable-wifi-off" style="margin: auto 3px auto 0;"></md-icon>
+                  </div>
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+    </md-toolbar>
+    <!-- Angular Material requires Angular.js Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>  
+
+    <script src="js/vendor/d3.v3.js"></script>
+    <script src="js/d3.architectureTree.js"></script>
+    <script src="js/angular.architectureTree/app.js"></script>
+    <script src="js/angular.architectureTree/controllers/chart.js"></script>
+    <script src="js/angular.architectureTree/controllers/filter.js"></script>
+    <script src="js/angular.architectureTree/controllers/json-data.js"></script>
+    <script src="js/angular.architectureTree/controllers/panel.js"></script>
+    <script src="js/angular.architectureTree/controllers/undo.js"></script>
+    <script src="js/angular.architectureTree/directives/tree-chart.js"></script>
+    <script src="js/angular.architectureTree/directives/init-focus.js"></script>
+    <script src="js/angular.architectureTree/services/data.js"></script>
+    <script src="js/angular.architectureTree/services/bus.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

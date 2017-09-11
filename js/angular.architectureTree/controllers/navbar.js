@@ -1,3 +1,3 @@
-angular.module('ChartsApp').controller('navbarCtrl', function ($scope, bus) {
+angular.module('ChartsApp', ['ngMaterial']).controller('navbarCtrl', function ($scope, bus) {
     
 });
